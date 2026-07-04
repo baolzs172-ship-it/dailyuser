@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LifeFlow - Tasks</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#e4e1e7",
+                    "inverse-surface": "#d4e4fa",
+                    "on-primary-fixed": "#002113",
+                    "on-secondary-container": "#b9b7c2",
+                    "surface-variant": "#273647",
+                    "on-tertiary-fixed-variant": "#47464b",
+                    "on-primary-container": "#00422b",
+                    "surface-container-highest": "#273647",
+                    "on-background": "#d4e4fa",
+                    "on-surface-variant": "#bbcabf",
+                    "on-tertiary": "#303034",
+                    "secondary-fixed-dim": "#c7c5d0",
+                    "background": "#051424",
+                    "on-tertiary-container": "#39393d",
+                    "surface-container-lowest": "#010f1f",
+                    "tertiary-container": "#a4a2a8",
+                    "surface-container-high": "#1c2b3c",
+                    "outline-variant": "#3c4a42",
+                    "on-tertiary-fixed": "#1b1b1f",
+                    "secondary-fixed": "#e4e1ed",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#c8c5cb",
+                    "on-secondary": "#303038",
+                    "outline": "#86948a",
+                    "surface-dim": "#051424",
+                    "surface-tint": "#4edea3",
+                    "on-secondary-fixed-variant": "#46464f",
+                    "on-primary": "#003824",
+                    "on-secondary-fixed": "#1b1b23",
+                    "secondary": "#c7c5d0",
+                    "surface-container": "#122131",
+                    "inverse-primary": "#006c49",
+                    "tertiary": "#c8c5cb",
+                    "primary-fixed-dim": "#4edea3",
+                    "secondary-container": "#494851",
+                    "error-container": "#93000a",
+                    "inverse-on-surface": "#233143",
+                    "on-error": "#690005",
+                    "primary": "#4edea3",
+                    "error": "#ffb4ab",
+                    "primary-fixed": "#6ffbbe",
+                    "on-primary-fixed-variant": "#005236",
+                    "on-surface": "#d4e4fa",
+                    "primary-container": "#10b981",
+                    "surface-bright": "#2c3a4c",
+                    "surface-container-low": "#0d1c2d",
+                    "surface": "#051424"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "2rem",
+                    "container-margin": "1rem",
+                    "gutter": "1rem",
+                    "stack-sm": "0.5rem",
+                    "stack-md": "1rem",
+                    "stack-lg": "1.5rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-md": ["Geist"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "label-sm": ["Geist"],
+                    "headline-sm": ["Manrope"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["10px", {"lineHeight": "12px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md-mobile": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm-mobile": ["18px", {"lineHeight": "24px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(22, 22, 30, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .task-checkbox:checked + .checkbox-visual {
+            background-color: #4edea3;
+            border-color: #4edea3;
+        }
+        .task-checkbox:checked + .checkbox-visual::after {
+            content: 'check';
+            font-family: 'Material Symbols Outlined';
+            font-size: 14px;
+            color: #003824;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1c2b3c;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-24">
+<!-- Top AppBar -->
+<header class="bg-surface/80 backdrop-blur-md w-full sticky top-0 z-40 flex justify-between items-center px-container-margin py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="bubble_chart">bubble_chart</span>
+<h1 class="font-headline-md text-headline-md-mobile font-bold text-primary">LifeFlow</h1>
+</div>
+<span class="font-headline-sm text-headline-sm-mobile text-primary">Oct 24, 2023</span>
+</header>
+<main class="px-container-margin mt-4 flex flex-col gap-stack-lg">
+<!-- Date Navigation & Progress -->
+<section class="glass-panel p-5 rounded-[24px] flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<button aria-label="Previous Day" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="text-center">
+<h2 class="font-headline-sm text-headline-sm-mobile text-on-surface">Tuesday, Oct 24</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Today</p>
+</div>
+<button aria-label="Next Day" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="space-y-2 mt-2">
+<div class="flex justify-between items-end">
+<span class="font-label-md text-label-md text-on-surface">Daily Progress</span>
+<span class="font-label-md text-label-md text-primary" id="progress-text">2/5 completed</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary transition-all duration-500 ease-out" id="progress-bar" style="width: 40%;"></div>
+</div>
+</div>
+</section>
+<!-- Task List Container -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm-mobile text-on-surface">Priority Tasks</h3>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full font-label-sm text-label-sm">5 Active</span>
+</div>
+<div class="flex flex-col gap-3" id="task-list">
+<!-- Task Item 1 -->
+<div class="glass-panel p-4 rounded-[24px] flex items-center gap-4 group transition-all duration-200 active:scale-95">
+<div class="relative flex items-center justify-center w-6 h-6">
+<input checked="" class="task-checkbox absolute opacity-0 w-full h-full cursor-pointer z-10 peer" onchange="updateProgress()" type="checkbox"/>
+<div class="checkbox-visual w-6 h-6 border-2 border-outline rounded-full flex items-center justify-center transition-all peer-hover:border-primary"></div>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg text-body-lg text-on-surface line-through decoration-on-surface-variant/50 opacity-60">Review Q4 Budget Reports</h4>
+<div class="flex items-center gap-3 mt-1">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 09:00 AM
+                            </span>
+<span class="bg-error-container/20 text-error px-2 py-0.5 rounded-lg font-label-sm text-label-sm border border-error/20">High</span>
+</div>
+</div>
+</div>
+<!-- Task Item 2 -->
+<div class="glass-panel p-4 rounded-[24px] flex items-center gap-4 group transition-all duration-200 active:scale-95">
+<div class="relative flex items-center justify-center w-6 h-6">
+<input class="task-checkbox absolute opacity-0 w-full h-full cursor-pointer z-10 peer" onchange="updateProgress()" type="checkbox"/>
+<div class="checkbox-visual w-6 h-6 border-2 border-outline rounded-full flex items-center justify-center transition-all peer-hover:border-primary"></div>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg text-body-lg text-on-surface">Product Sync Meeting</h4>
+<div class="flex items-center gap-3 mt-1">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 11:30 AM
+                            </span>
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded-lg font-label-sm text-label-sm border border-primary/20">Med</span>
+</div>
+</div>
+</div>
+<!-- Task Item 3 -->
+<div class="glass-panel p-4 rounded-[24px] flex items-center gap-4 group transition-all duration-200 active:scale-95">
+<div class="relative flex items-center justify-center w-6 h-6">
+<input checked="" class="task-checkbox absolute opacity-0 w-full h-full cursor-pointer z-10 peer" onchange="updateProgress()" type="checkbox"/>
+<div class="checkbox-visual w-6 h-6 border-2 border-outline rounded-full flex items-center justify-center transition-all peer-hover:border-primary"></div>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg text-body-lg text-on-surface line-through decoration-on-surface-variant/50 opacity-60">Buy Groceries</h4>
+<div class="flex items-center gap-3 mt-1">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 05:00 PM
+                            </span>
+<span class="bg-surface-container-highest text-on-surface-variant px-2 py-0.5 rounded-lg font-label-sm text-label-sm">Low</span>
+</div>
+</div>
+</div>
+<!-- Task Item 4 -->
+<div class="glass-panel p-4 rounded-[24px] flex items-center gap-4 group transition-all duration-200 active:scale-95">
+<div class="relative flex items-center justify-center w-6 h-6">
+<input class="task-checkbox absolute opacity-0 w-full h-full cursor-pointer z-10 peer" onchange="updateProgress()" type="checkbox"/>
+<div class="checkbox-visual w-6 h-6 border-2 border-outline rounded-full flex items-center justify-center transition-all peer-hover:border-primary"></div>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg text-body-lg text-on-surface">Design Review: Home Page</h4>
+<div class="flex items-center gap-3 mt-1">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 02:00 PM
+                            </span>
+<span class="bg-error-container/20 text-error px-2 py-0.5 rounded-lg font-label-sm text-label-sm border border-error/20">High</span>
+</div>
+</div>
+</div>
+<!-- Task Item 5 -->
+<div class="glass-panel p-4 rounded-[24px] flex items-center gap-4 group transition-all duration-200 active:scale-95">
+<div class="relative flex items-center justify-center w-6 h-6">
+<input class="task-checkbox absolute opacity-0 w-full h-full cursor-pointer z-10 peer" onchange="updateProgress()" type="checkbox"/>
+<div class="checkbox-visual w-6 h-6 border-2 border-outline rounded-full flex items-center justify-center transition-all peer-hover:border-primary"></div>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg text-body-lg text-on-surface">Workout Session</h4>
+<div class="flex items-center gap-3 mt-1">
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 06:30 PM
+                            </span>
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded-lg font-label-sm text-label-sm border border-primary/20">Med</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Asymmetric Motivational Card -->
+<section class="relative overflow-hidden glass-panel p-6 rounded-[24px] min-h-[140px] flex flex-col justify-end">
+
+<div class="relative z-10">
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-1">Stay Focused</p>
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface leading-tight">Focus on the outcome, not the obstacle.</h3>
+</div>
+</section>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl border-t border-white/5 bg-surface-container/90 backdrop-blur-xl shadow-lg flex justify-around items-center h-16 px-4">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-200 scale-98">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-200 scale-98">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Accounting</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all duration-200 scale-98">
+<span class="material-symbols-outlined" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">Tasks</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-200 scale-98">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</button>
+</nav>
+<script>
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.task-checkbox');
+            const checkedCount = Array.from(checkboxes).filter(c => c.checked).length;
+            const totalCount = checkboxes.length;
+            const percentage = (checkedCount / totalCount) * 100;
+
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+
+            progressBar.style.width = percentage + '%';
+            progressText.innerText = `${checkedCount}/${totalCount} completed`;
+
+            // Visual feedback for task completion
+            checkboxes.forEach(cb => {
+                const title = cb.closest('div.glass-panel').querySelector('h4');
+                if (cb.checked) {
+                    title.classList.add('line-through', 'decoration-on-surface-variant/50', 'opacity-60');
+                } else {
+                    title.classList.remove('line-through', 'decoration-on-surface-variant/50', 'opacity-60');
+                }
+            });
+        }
+
+        // Initialize progress on load
+        window.onload = updateProgress;
+    </script>
+</body></html>
